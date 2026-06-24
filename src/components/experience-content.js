@@ -1,7 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import ContentTitle from './content-title';
+import { PiArrowUpRight, PiBriefcase } from 'react-icons/pi';
+import SectionHeading from './ui/section-heading';
+import Reveal from './ui/reveal';
+import ClipCard from './ui/clip-card';
 
 const experiences = [
     {
@@ -11,7 +13,7 @@ const experiences = [
         location: 'India • Remote',
         duration: 'Mar 2026 – Apr 2026 (2 mon)',
         points: [
-            'Developed practical AI projects for educational purposes, including a real-time exercise coaching system using computer vision and pose estimation.'
+            'Developed practical AI projects for educational purposes, including a real-time exercise coaching system using computer vision and pose estimation.',
         ],
     },
     {
@@ -41,74 +43,67 @@ const experiences = [
 
 const ExperienceContent = () => {
     return (
-        <section id="experience" className="py-24 px-4">
-            <div className="max-w-4xl mx-auto">
-                <ContentTitle title="Experience" subtitle="My professional journey" />
+        <section id="experience" className="px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+            <div className="mx-auto max-w-4xl">
+                <SectionHeading
+                    eyebrow="Experience"
+                    title="My professional journey"
+                    subtitle="Roles where I shipped real, used software."
+                />
 
                 <div className="relative">
-                    {/* Timeline line */}
-                    <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--accent-blue)] via-[var(--gradient-end)] to-transparent" />
+                    {/* timeline line */}
+                    <div className="absolute top-2 bottom-2 left-[15px] w-px bg-gradient-to-b from-amber-500 via-orange-400 to-transparent md:left-[19px]" />
 
-                    <div className="space-y-12">
+                    <div className="space-y-8">
                         {experiences.map((exp, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, x: -30 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true, margin: '-100px' }}
-                                transition={{ duration: 0.6, delay: index * 0.2 }}
-                                className="relative pl-12 md:pl-20"
-                            >
-                                {/* Timeline dot */}
-                                <div
-                                    className="absolute left-2 md:left-6 top-1 w-5 h-5 border-2 border-[var(--accent-blue)] bg-[var(--bg-primary)]"
-                                    style={{ borderRadius: '50%' }}
-                                >
-                                    <div
-                                        className="absolute inset-1 bg-[var(--accent-blue)]"
-                                        style={{ borderRadius: '50%' }}
-                                    />
+                            <Reveal key={index} delay={index * 0.08} className="relative pl-12 md:pl-16">
+                                {/* timeline node */}
+                                <div className="absolute top-1 left-0 flex size-8 items-center justify-center rounded-full bg-background ring-1 ring-amber-400 md:size-10">
+                                    <span className="flex size-6 items-center justify-center rounded-full bg-amber-400 text-foreground md:size-7">
+                                        <PiBriefcase className="size-3.5" />
+                                    </span>
                                 </div>
 
-                                <div className="bg-[var(--card-bg)] border border-white/5 p-6 card-hover">
-                                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
-                                        <h3 className="text-xl font-semibold text-[var(--text-primary)] font-subtitle">
+                                <ClipCard
+                                    outerClassName="[--notch:18px] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-24px_rgb(28_25_23_/0.25)]"
+                                    className="bg-card p-6 [--notch:18px]"
+                                >
+                                    <div className="mb-3 flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between">
+                                        <h3 className="font-geom text-lg font-semibold tracking-tight text-foreground">
                                             {exp.role}
                                         </h3>
-                                        <span className="text-sm text-[var(--text-muted)] whitespace-nowrap">
+                                        <span className="font-geom flex-shrink-0 rounded-none bg-muted px-3 py-1 text-xs font-medium text-muted-foreground">
                                             {exp.duration}
                                         </span>
                                     </div>
 
-                                    <p className="text-[var(--accent-blue)] mb-1">
-                                        <a
-                                            href={exp.companyUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="hover:underline"
-                                        >
-                                            {exp.company}
-                                        </a>
-                                    </p>
-                                    <p className="text-sm text-[var(--text-muted)] mb-4">
+                                    <a
+                                        href={exp.companyUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-1 bg-gradient-to-r from-amber-600 to-orange-500 bg-clip-text font-medium text-transparent hover:underline"
+                                    >
+                                        {exp.company}
+                                        <PiArrowUpRight className="size-3.5 text-orange-500" />
+                                    </a>
+                                    <p className="mt-1 text-sm text-muted-foreground">
                                         {exp.location}
                                     </p>
 
-                                    <ul className="space-y-2">
+                                    <ul className="mt-4 space-y-2">
                                         {exp.points.map((point, i) => (
                                             <li
                                                 key={i}
-                                                className="text-[var(--text-muted)] text-sm leading-relaxed flex gap-2"
+                                                className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground"
                                             >
-                                                <span className="text-[var(--accent-blue)] mt-1">
-                                                    ▸
-                                                </span>
+                                                <span className="mt-1.5 size-1.5 flex-shrink-0 rounded-full bg-amber-500" />
                                                 {point}
                                             </li>
                                         ))}
                                     </ul>
-                                </div>
-                            </motion.div>
+                                </ClipCard>
+                            </Reveal>
                         ))}
                     </div>
                 </div>

@@ -1,8 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Image from 'next/image';
-import ContentTitle from './content-title';
+import { PiArrowUpRight, PiTrophy } from 'react-icons/pi';
+import SectionHeading from './ui/section-heading';
+import Reveal from './ui/reveal';
+import ClipCard from './ui/clip-card';
+import { ClipOutlineButton } from './ui/buttons';
 
 const achievements = [
     {
@@ -14,77 +17,80 @@ const achievements = [
 
 const AchievementsContent = () => {
     return (
-        <section id="achievements" className="py-24 px-4">
-            <div className="max-w-6xl mx-auto">
-                <ContentTitle title="Achievements" subtitle="Milestones and recognitions" />
+        <section id="achievements" className="px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+            <div className="mx-auto max-w-6xl">
+                <SectionHeading
+                    eyebrow="Achievements"
+                    title="Milestones & recognition"
+                    subtitle="A few moments I'm proud of."
+                />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     {achievements.map((achievement, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: '-100px' }}
-                            transition={{ duration: 0.6 }}
-                            className="bg-[var(--card-bg)] border border-white/5 overflow-hidden card-glow group"
-                        >
-                            <div
-                                className="relative overflow-hidden"
-                                style={{ paddingBottom: '75%' }}
+                        <Reveal key={index}>
+                            <ClipCard
+                                border="bg-amber-300 dark:bg-amber-400"
+                                outerClassName="[--notch:22px] h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-30px_rgb(28_25_23_/0.3)]"
+                                className="group flex h-full flex-col bg-card [--notch:22px]"
                             >
-                                <Image
-                                    width={500}
-                                    height={375}
-                                    src={achievement.image}
-                                    alt={achievement.title}
-                                    className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                            </div>
-                            <div className="p-6">
-                                <h3 className="text-lg font-semibold text-[var(--text-primary)] font-subtitle mb-4 leading-relaxed">
-                                    {achievement.title}
-                                </h3>
-                                <div className="flex flex-wrap gap-3">
-                                    {achievement.highlights.map((h, i) => (
-                                        <span
-                                            key={i}
-                                            className="text-sm px-3 py-1 bg-[var(--accent-yellow)]/10 text-[var(--accent-yellow)] border border-[var(--accent-yellow)]/20"
-                                        >
-                                            {h}
-                                        </span>
-                                    ))}
+                                <div
+                                    className="relative overflow-hidden bg-muted"
+                                    style={{ paddingBottom: '66%' }}
+                                >
+                                    <Image
+                                        width={500}
+                                        height={375}
+                                        src={achievement.image}
+                                        alt={achievement.title}
+                                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 to-transparent" />
                                 </div>
-                            </div>
-                        </motion.div>
+                                <div className="flex flex-1 flex-col p-6">
+                                    <h3 className="font-geom text-base font-semibold leading-relaxed text-foreground">
+                                        {achievement.title}
+                                    </h3>
+                                    <div className="mt-4 flex flex-wrap gap-2">
+                                        {achievement.highlights.map((h, i) => (
+                                            <span
+                                                key={i}
+                                                className="font-geom bg-accent/70 px-3 py-1 text-xs font-medium text-accent-foreground ring-1 ring-amber-500/10"
+                                            >
+                                                {h}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </ClipCard>
+                        </Reveal>
                     ))}
 
-                    {/* Kaggle Expert highlight card */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: '-100px' }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="bg-[var(--card-bg)] border border-white/5 p-6 card-glow flex flex-col justify-center"
-                    >
-                        <div className="text-center">
-                            <div className="text-5xl mb-4">🏅</div>
-                            <h3 className="text-2xl font-bold text-[var(--text-primary)] font-subtitle mb-2">
+                    {/* Kaggle Expert highlight */}
+                    <Reveal delay={0.1}>
+                        <ClipCard
+                            outerClassName="[--notch:22px] h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-30px_rgb(28_25_23_/0.3)]"
+                            className="flex h-full flex-col items-center justify-center bg-card p-10 text-center [--notch:22px]"
+                        >
+                            <div className="flex size-16 items-center justify-center rounded-full bg-amber-400/15 text-3xl text-amber-500 ring-1 ring-amber-400/30">
+                                <PiTrophy />
+                            </div>
+                            <h3 className="font-caprasimo mt-5 text-3xl text-foreground">
                                 Kaggle 2x Expert
                             </h3>
-                            <p className="text-[var(--text-muted)] mb-6">
-                                Recognized as a Kaggle Expert in Notebooks and Datasets
+                            <p className="mt-3 max-w-xs text-muted-foreground">
+                                Recognized as a Kaggle Expert in Notebooks and Datasets.
                             </p>
-                            <a
+                            <ClipOutlineButton
                                 href="https://www.kaggle.com/princekhunt19"
                                 target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-block px-6 py-2 bg-[var(--accent-blue)]/10 text-[var(--accent-blue)] border border-[var(--accent-blue)]/30 hover:bg-[var(--accent-blue)]/20 transition-colors text-sm"
+                                className="mt-6"
+                                innerClassName="px-5 py-2.5"
                             >
-                                View Kaggle Profile ↗
-                            </a>
-                        </div>
-                    </motion.div>
+                                <span className="font-geom font-semibold">View Kaggle Profile</span>
+                                <PiArrowUpRight className="size-4 text-amber-500" />
+                            </ClipOutlineButton>
+                        </ClipCard>
+                    </Reveal>
                 </div>
             </div>
         </section>

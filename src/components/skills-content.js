@@ -1,7 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import ContentTitle from './content-title';
 import { FaPython, FaReact, FaNodeJs, FaDocker, FaGithub, FaDatabase } from 'react-icons/fa';
 import {
     SiTensorflow,
@@ -20,11 +18,15 @@ import { TbBrandCpp } from 'react-icons/tb';
 import { DiJavascript1 } from 'react-icons/di';
 import { BsBraces } from 'react-icons/bs';
 import { MdOutlineScience } from 'react-icons/md';
+import { PiBrain, PiStack, PiCode, PiWrench, PiMathOperations } from 'react-icons/pi';
+import SectionHeading from './ui/section-heading';
+import Reveal from './ui/reveal';
+import FeatureCard from './ui/feature-card';
 
 const skillCategories = [
     {
         title: 'AI / ML',
-        color: 'var(--accent-blue)',
+        icon: <PiBrain />,
         skills: [
             { name: 'Machine Learning', icon: <MdOutlineScience /> },
             { name: 'Deep Learning', icon: <SiTensorflow /> },
@@ -33,12 +35,12 @@ const skillCategories = [
             { name: 'Computer Vision', icon: <SiOpencv /> },
             { name: 'LangChain', icon: <SiLangchain /> },
             { name: 'LangGraph', icon: <BsBraces /> },
-            { name: 'AI Agents / MCP Server', icon: <BsBraces /> },
+            { name: 'AI Agents / MCP', icon: <BsBraces /> },
         ],
     },
     {
         title: 'Libraries / Frameworks',
-        color: 'var(--gradient-end)',
+        icon: <PiStack />,
         skills: [
             { name: 'TensorFlow', icon: <SiTensorflow /> },
             { name: 'Keras', icon: <SiKeras /> },
@@ -51,7 +53,7 @@ const skillCategories = [
     },
     {
         title: 'Full-Stack Development',
-        color: '#10B981',
+        icon: <PiCode />,
         skills: [
             { name: 'React', icon: <FaReact /> },
             { name: 'Next.js', icon: <SiNextdotjs /> },
@@ -63,7 +65,7 @@ const skillCategories = [
     },
     {
         title: 'Programming & Tools',
-        color: 'var(--accent-yellow)',
+        icon: <PiWrench />,
         skills: [
             { name: 'Python', icon: <FaPython /> },
             { name: 'JavaScript', icon: <DiJavascript1 /> },
@@ -76,7 +78,7 @@ const skillCategories = [
     },
     {
         title: 'Mathematics',
-        color: '#F472B6',
+        icon: <PiMathOperations />,
         skills: [
             { name: 'Linear Algebra', icon: <MdOutlineScience /> },
             { name: 'Calculus', icon: <MdOutlineScience /> },
@@ -88,45 +90,33 @@ const skillCategories = [
 
 const SkillsContent = () => {
     return (
-        <section id="skills" className="py-24 px-4 bg-[var(--bg-secondary)]">
-            <div className="max-w-6xl mx-auto">
-                <ContentTitle title="Skills" subtitle="Technologies and tools I work with" />
+        <section id="skills" className="px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+            <div className="mx-auto max-w-6xl">
+                <SectionHeading
+                    eyebrow="Skills"
+                    title="My stack & toolkit"
+                    subtitle="Technologies and tools I reach for to ship."
+                />
 
-                <div className="space-y-12">
-                    {skillCategories.map((category, catIdx) => (
-                        <motion.div
-                            key={catIdx}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: '-50px' }}
-                            transition={{ duration: 0.5, delay: catIdx * 0.1 }}
-                        >
-                            <h3
-                                className="text-xl font-semibold mb-6 font-subtitle"
-                                style={{ color: category.color }}
-                            >
-                                {category.title}
-                            </h3>
-                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-                                {category.skills.map((skill, skillIdx) => (
-                                    <motion.div
-                                        key={skillIdx}
-                                        whileHover={{ y: -4, scale: 1.02 }}
-                                        className="bg-[var(--card-bg)] border border-white/5 p-4 flex items-center gap-3 card-hover group cursor-default"
-                                    >
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {skillCategories.map((category, i) => (
+                        <Reveal key={category.title} delay={(i % 3) * 0.07} className="h-full">
+                            <FeatureCard icon={category.icon} title={category.title}>
+                                <div className="mt-3 flex flex-wrap gap-2">
+                                    {category.skills.map((skill) => (
                                         <span
-                                            className="text-xl opacity-60 group-hover:opacity-100 transition-opacity"
-                                            style={{ color: category.color }}
+                                            key={skill.name}
+                                            className="font-geom inline-flex items-center gap-1.5 bg-background/70 px-2.5 py-1 text-xs font-medium text-foreground/80 ring-1 ring-stone-200/70 dark:ring-white/10"
                                         >
-                                            {skill.icon}
-                                        </span>
-                                        <span className="text-sm text-[var(--text-primary)]">
+                                            <span className="text-sm text-amber-600 dark:text-amber-400">
+                                                {skill.icon}
+                                            </span>
                                             {skill.name}
                                         </span>
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </motion.div>
+                                    ))}
+                                </div>
+                            </FeatureCard>
+                        </Reveal>
                     ))}
                 </div>
             </div>

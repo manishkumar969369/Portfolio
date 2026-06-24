@@ -1,11 +1,52 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
-import ContentTitle from './content-title';
+import { PiArrowUpRight, PiStar } from 'react-icons/pi';
+import SectionHeading from './ui/section-heading';
+import Reveal from './ui/reveal';
+import ClipCard from './ui/clip-card';
 
 const projects = [
+    {
+        title: 'Customer Care — AI Support Assistant',
+        projectImages: [
+            './projects/11/ss1.png',
+            './projects/11/ss2.png',
+            './projects/11/ss3.png',
+            './projects/11/ss4.png',
+            './projects/11/ss5.png',
+            './projects/11/ss6.png',
+            './projects/11/ss7.png',
+        ],
+        descriptionPoints: [
+            'Built an ecommerce support chatbot with an Agentic RAG workflow (LangGraph planner → executor → synthesizer) that answers product, order-tracking, and shipping/returns queries.',
+            "Streamed the agent's thinking, tool calls, and final answer live to the UI over WebSockets, backed by JWT auth, Postgres + pgvector retrieval, and Redis short-term memory.",
+        ],
+        techstack: ['LangGraph', 'Gemini', 'pgvector'],
+        links: [
+            {
+                title: 'GitHub',
+                url: 'https://github.com/PrinceKhunt16/Ecommerce-AI-Assistant-AGENTIC',
+            },
+        ],
+    },
+    {
+        title: 'Wed-IMG-Finder — Wedding Photo Finder',
+        projectImages: ['./projects/12/ss1.jpeg', './projects/12/ss2.jpeg'],
+        descriptionPoints: [
+            'Built a face-recognition wedding photo finder that lets guests instantly find every photo they appear in by uploading a single selfie.',
+            'Engineered an async pipeline with FastAPI, Celery, and Redis to detect faces and generate embeddings in the background, storing them in PostgreSQL + pgvector for fast vector similarity search.',
+            'Developed a Next.js 15 / React 19 frontend and integrated InsightFace for face detection.',
+        ],
+        techstack: ['FastAPI', 'InsightFace', 'pgvector'],
+        links: [
+            {
+                title: 'GitHub',
+                url: 'https://github.com/PrinceKhunt16/Wed-IMG-Finder',
+            },
+        ],
+    },
     {
         title: 'Job Genie - One click job search tool',
         projectImages: [
@@ -120,24 +161,6 @@ const projects = [
         ],
     },
     {
-        title: 'NiceNote.ai - AI powered Notes maker',
-        projectImages: [
-            './projects/8/ss1.png',
-            './projects/8/ss2.png',
-            './projects/8/ss3.png',
-            './projects/8/ss4.png',
-            './projects/8/ss5.png',
-            './projects/8/ss6.png',
-        ],
-        descriptionPoints: [
-            'Upload PDFs and automatically extract content using PDF parsing.',
-            'Generate intelligent notes from extracted text using LLM (Groq integration).',
-            'Built using Next.js, Supabase, React Query, and TailwindCSS.',
-        ],
-        techstack: ['Next.js', 'Supabase', 'Shadcn'],
-        links: [{ title: 'NiceNote.ai', url: 'https://nice-note-ai.vercel.app/' }],
-    },
-    {
         title: 'Self Drive Car - Computer Vision',
         projectImages: ['./projects/5/ss1.png'],
         descriptionPoints: [
@@ -165,16 +188,6 @@ const projects = [
         ],
     },
     {
-        title: 'Revise in short - AI powered quiz generator',
-        projectImages: ['./projects/6/ss1.png'],
-        descriptionPoints: [
-            'Developed an AI-powered quiz and summary generator tailored for students and teachers.',
-            'Automates the creation of personalized quizzes and concise summaries for effective learning.',
-        ],
-        techstack: ['Langchain', 'FastAPI', 'Next.js'],
-        links: [],
-    },
-    {
         title: 'Vehicles Insurance Prediction',
         projectImages: ['./projects/7/ss1.png'],
         descriptionPoints: [
@@ -189,80 +202,52 @@ const projects = [
             },
         ],
     },
-    {
-        title: 'Healthcare AI - AI powered healthcare platform',
-        projectImages: [
-            './projects/4/ss1.png',
-            './projects/4/ss2.png',
-            './projects/4/ss3.png',
-            './projects/4/ss4.png',
-            './projects/4/ss5.png',
-            './projects/4/ss6.png',
-            './projects/4/ss7.png',
-            './projects/4/ss8.png',
-            './projects/4/ss9.png',
-            './projects/4/ss10.png',
-        ],
-        descriptionPoints: [
-            'Healthcare AI is a web app integrating AI-powered features for patients and doctors.',
-            'Features medical report summarization, health chatbot, YouTube recommendations, and appointment management.',
-        ],
-        techstack: ['RAG', 'Langchain', 'Flask', 'React.js'],
-        links: [
-            {
-                title: 'GitHub',
-                url: 'https://github.com/PrinceKhunt16/Healthcare-AI-Langchain-FAISS-Database-Olama-Grok-React.js-Flask',
-            },
-        ],
-    },
 ];
 
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = ({ project, featured }) => {
     const [mainImage, setMainImage] = useState(project.projectImages[0]);
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.6, delay: index * 0.05 }}
-            className="bg-[var(--card-bg)] border border-white/5 overflow-hidden card-glow tilt-card group"
+        <ClipCard
+            border={featured ? 'bg-amber-300 dark:bg-amber-400' : 'bg-border'}
+            outerClassName="[--notch:22px] h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-30px_rgb(28_25_23_/0.3)]"
+            className="group flex h-full flex-col bg-card [--notch:22px]"
         >
-            {/* Image */}
-            <div className="relative overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+            {/* media */}
+            <div className="relative overflow-hidden bg-muted">
                 <div className="relative w-full" style={{ aspectRatio: '16 / 10' }}>
                     <Image
                         width={640}
                         height={400}
                         src={mainImage}
                         alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                 </div>
-                {/* Thumbnail strip */}
                 {project.projectImages.length > 1 && (
-                    <div className="absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-sm p-2 flex gap-1 overflow-x-auto">
+                    <div className="absolute inset-x-0 bottom-0 flex gap-1 overflow-x-auto bg-foreground/50 p-2 backdrop-blur-sm">
                         {project.projectImages.slice(0, 6).map((img, i) => (
                             <button
                                 key={i}
                                 onClick={() => setMainImage(img)}
-                                className={`w-10 h-7 flex-shrink-0 overflow-hidden border transition-all ${
+                                aria-label={`Show screenshot ${i + 1}`}
+                                className={`h-7 w-10 flex-shrink-0 overflow-hidden ring-1 transition-all ${
                                     mainImage === img
-                                        ? 'border-[var(--accent-blue)]'
-                                        : 'border-transparent opacity-60 hover:opacity-100'
+                                        ? 'opacity-100 ring-amber-400'
+                                        : 'opacity-60 ring-transparent hover:opacity-100'
                                 }`}
                             >
                                 <Image
                                     src={img}
-                                    alt={`Thumb ${i + 1}`}
+                                    alt=""
                                     width={40}
                                     height={28}
-                                    className="w-full h-full object-cover"
+                                    className="h-full w-full object-cover"
                                 />
                             </button>
                         ))}
                         {project.projectImages.length > 6 && (
-                            <span className="text-xs text-white/50 flex items-center px-1">
+                            <span className="flex items-center px-1 text-xs text-white/70">
                                 +{project.projectImages.length - 6}
                             </span>
                         )}
@@ -270,65 +255,71 @@ const ProjectCard = ({ project, index }) => {
                 )}
             </div>
 
-            {/* Content */}
-            <div className="p-5">
-                <h3 className="text-lg font-semibold text-[var(--text-primary)] font-subtitle mb-2">
+            {/* content */}
+            <div className="flex flex-1 flex-col p-6">
+                <h3 className="font-geom text-lg font-semibold tracking-tight text-foreground">
                     {project.title}
                 </h3>
 
-                <ul className="text-sm text-[var(--text-muted)] space-y-1 mb-4">
+                <ul className="mt-3 space-y-1.5">
                     {project.descriptionPoints.map((point, i) => (
-                        <li key={i} className="leading-relaxed">
-                            - {point}
+                        <li
+                            key={i}
+                            className="flex gap-2 text-sm leading-relaxed text-muted-foreground"
+                        >
+                            <span className="mt-1.5 size-1.5 flex-shrink-0 rounded-full bg-amber-500/70" />
+                            {point}
                         </li>
                     ))}
                 </ul>
 
-                {/* Tech stack */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                    {project.techstack.map((tech, i) => (
+                <div className="mt-4 flex flex-wrap gap-2">
+                    {project.techstack.map((tech) => (
                         <span
-                            key={i}
-                            className="text-xs px-2 py-1 bg-[var(--accent-blue)]/10 text-[var(--accent-blue)] border border-[var(--accent-blue)]/20"
+                            key={tech}
+                            className="font-geom bg-accent/70 px-2.5 py-1 text-xs font-medium text-accent-foreground ring-1 ring-amber-500/10"
                         >
                             {tech}
                         </span>
                     ))}
                 </div>
 
-                {/* Links */}
                 {project.links.length > 0 && (
-                    <div className="flex flex-wrap gap-3">
+                    <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 border-t border-border pt-4">
                         {project.links.map((link, i) => (
                             <a
                                 key={i}
                                 href={link.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-sm text-[var(--accent-blue)] hover:text-white transition-colors flex items-center gap-1"
+                                className="inline-flex items-center gap-1 text-sm font-medium text-foreground transition-colors hover:text-orange-500"
                             >
-                                {link.title} <span className="text-xs">↗</span>
+                                {link.title}
+                                <PiArrowUpRight className="size-3.5 text-orange-500" />
                             </a>
                         ))}
                     </div>
                 )}
             </div>
-        </motion.div>
+        </ClipCard>
     );
 };
 
 const ProjectsContent = () => {
     return (
-        <section id="projects" className="py-24 px-4">
-            <div className="max-w-7xl mx-auto">
-                <ContentTitle
-                    title="Projects"
-                    subtitle="A showcase of my work building AI-powered solutions"
+        <section id="projects" className="bg-muted/30 px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
+            <div className="mx-auto max-w-6xl">
+                <SectionHeading
+                    eyebrow="Projects"
+                    title="A showcase of AI-powered work"
+                    subtitle="Real, shipped solutions across GenAI, computer vision, and full-stack."
                 />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     {projects.map((project, index) => (
-                        <ProjectCard key={index} project={project} index={index} />
+                        <Reveal key={index} delay={(index % 2) * 0.08}>
+                            <ProjectCard project={project} featured={index < 2} />
+                        </Reveal>
                     ))}
                 </div>
             </div>

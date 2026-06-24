@@ -1,167 +1,413 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap');
 @import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ============================================================
+   COLOR TOKENS — "Warm Notched / Cut-Corner" aesthetic
+   Light is the default and the star. Dark is warm deep stone.
+   ============================================================ */
 :root {
-    --bg-primary: #0b1120;
-    --bg-secondary: #111827;
-    --accent-blue: #3b82f6;
-    --accent-yellow: #facc15;
-    --gradient-start: #3b82f6;
-    --gradient-end: #9333ea;
-    --text-primary: #e5e7eb;
-    --text-muted: #9ca3af;
-    --card-bg: #1f2937;
-    --font-averta: var(--font-averta-loaded), system-ui, sans-serif;
-    --font-merriweather: 'Merriweather', Georgia, serif;
-    --font-cardo: 'Cardo', Georgia, serif;
+    /* surfaces & text */
+    --background: rgb(255 251 241); /* #fffbf1 warm cream off-white */
+    --foreground: oklch(0.145 0.008 75); /* warm near-black */
+    --card: oklch(0.975 0.004 75); /* slightly off-white */
+    --card-foreground: oklch(0.145 0.008 75);
+    --popover: oklch(0.98 0.003 75);
+    --popover-foreground: oklch(0.145 0.008 75);
+
+    /* the single accent — amber */
+    --primary: oklch(0.769 0.154 70.08); /* amber-500 */
+    --primary-foreground: oklch(0.145 0.008 75);
+
+    --secondary: oklch(0.94 0.012 75);
+    --secondary-foreground: oklch(0.145 0.008 75);
+    --muted: oklch(0.94 0.012 75);
+    --muted-foreground: oklch(0.52 0.012 75); /* stone-400-ish */
+    --accent: oklch(0.92 0.045 85); /* amber-100 (card tint) */
+    --accent-foreground: oklch(0.42 0.08 70); /* amber-800 */
+
+    --destructive: oklch(0.577 0.205 27.3);
+    --destructive-foreground: oklch(0.98 0.003 75);
+
+    --border: oklch(0.895 0.018 75);
+    --input: oklch(0.895 0.018 75);
+    --ring: oklch(0.769 0.154 70.08); /* amber */
+
+    /* semantic metric pairs (bg + fg) for stat tiles */
+    --metric-blue-bg: oklch(0.95 0.025 240);
+    --metric-blue-fg: oklch(0.55 0.16 240);
+    --metric-green-bg: oklch(0.96 0.03 142);
+    --metric-green-fg: oklch(0.5 0.15 142);
+    --metric-amber-bg: oklch(0.96 0.035 75);
+    --metric-amber-fg: oklch(0.58 0.15 75);
+    --metric-red-bg: oklch(0.95 0.03 25);
+    --metric-red-fg: oklch(0.52 0.16 25);
+    --metric-purple-bg: oklch(0.96 0.025 295);
+    --metric-purple-fg: oklch(0.56 0.16 295);
+
+    /* fonts (families assigned by next/font via :root variables) */
+    --font-averta: var(--font-averta-loaded), -apple-system, BlinkMacSystemFont,
+        'Segoe UI', sans-serif;
 }
 
-* {
-    border-radius: 0 !important;
-    scroll-behavior: smooth;
+.dark {
+    --background: oklch(0.128 0.01 75); /* warm stone-950, not black */
+    --foreground: oklch(0.94 0.008 75);
+    --card: oklch(0.168 0.01 75); /* stone-900 */
+    --card-foreground: oklch(0.94 0.008 75);
+    --popover: oklch(0.168 0.01 75);
+    --popover-foreground: oklch(0.94 0.008 75);
+
+    --primary: oklch(0.769 0.154 70.08); /* amber stays */
+    --primary-foreground: oklch(0.128 0.01 75);
+
+    --secondary: oklch(0.22 0.01 75);
+    --secondary-foreground: oklch(0.94 0.008 75);
+    --muted: oklch(0.22 0.01 75);
+    --muted-foreground: oklch(0.62 0.012 75);
+    --accent: oklch(0.26 0.035 72); /* amber-tinted dark */
+    --accent-foreground: oklch(0.84 0.1 78); /* amber-300 */
+
+    --destructive: oklch(0.62 0.2 27.3);
+    --destructive-foreground: oklch(0.96 0.01 75);
+
+    --border: oklch(0.28 0.012 75);
+    --input: oklch(0.28 0.012 75);
+    --ring: oklch(0.769 0.154 70.08);
+
+    --metric-blue-bg: oklch(0.22 0.04 240);
+    --metric-blue-fg: oklch(0.78 0.1 240);
+    --metric-green-bg: oklch(0.22 0.04 142);
+    --metric-green-fg: oklch(0.78 0.1 142);
+    --metric-amber-bg: oklch(0.22 0.04 75);
+    --metric-amber-fg: oklch(0.78 0.1 75);
+    --metric-red-bg: oklch(0.22 0.04 25);
+    --metric-red-fg: oklch(0.78 0.1 25);
+    --metric-purple-bg: oklch(0.22 0.04 295);
+    --metric-purple-fg: oklch(0.78 0.1 295);
 }
 
-body {
-    color: var(--text-primary);
-    background: var(--bg-primary);
-    font-family: var(--font-averta);
+/* ============================================================
+   MAP TOKENS INTO TAILWIND v4 THEME
+   ============================================================ */
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-metric-blue-bg: var(--metric-blue-bg);
+    --color-metric-blue-fg: var(--metric-blue-fg);
+    --color-metric-green-bg: var(--metric-green-bg);
+    --color-metric-green-fg: var(--metric-green-fg);
+    --color-metric-amber-bg: var(--metric-amber-bg);
+    --color-metric-amber-fg: var(--metric-amber-fg);
+    --color-metric-red-bg: var(--metric-red-bg);
+    --color-metric-red-fg: var(--metric-red-fg);
+    --color-metric-purple-bg: var(--metric-purple-bg);
+    --color-metric-purple-fg: var(--metric-purple-fg);
+
+    --font-sans: var(--font-averta);
+    --font-caprasimo: var(--font-caprasimo-loaded), 'Caprasimo', Georgia, serif;
+    --font-geom: var(--font-geom-loaded), 'Space Grotesk', system-ui, sans-serif;
+    --font-merriweather: var(--font-merriweather-loaded), 'Merriweather', Georgia, serif;
+    --font-young-serif: var(--font-young-serif-loaded), 'Young Serif', Georgia, serif;
+
+    --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+@layer base {
+    * {
+        border-color: var(--border);
+    }
+
+    html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+        background-color: var(--background);
+        color: var(--foreground);
+        font-family: var(--font-averta);
+        font-weight: 400;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* anchors clear the fixed nav */
+    section[id] {
+        scroll-margin-top: 6rem;
+    }
+
+    code,
+    kbd,
+    samp,
+    pre {
+        font-family: var(--font-averta);
+    }
+
+    ::selection {
+        background: oklch(0.769 0.154 70.08 / 0.3);
+        color: var(--foreground);
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: var(--background);
+    }
+    ::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--primary);
+    }
+}
+
+/* ============================================================
+   TYPOGRAPHY ROLE CLASSES
+   ============================================================ */
+.font-caprasimo {
+    font-family: var(--font-caprasimo);
     font-weight: 400;
-    overflow-x: hidden;
 }
-
-h1,
-h2,
-.font-title {
+.font-geom {
+    font-family: var(--font-geom);
+}
+.font-merriweather {
     font-family: var(--font-merriweather);
 }
-
-h3,
-h4,
-.font-subtitle {
-    font-family: var(--font-cardo);
+.font-young-serif {
+    font-family: var(--font-young-serif);
+    font-weight: 400;
 }
 
-p,
-a,
-button,
-span,
-li,
-input,
-textarea,
-label {
-    font-family: var(--font-averta);
+/* ============================================================
+   ⭐ SIGNATURE CUT-CORNER GEOMETRY
+   ============================================================ */
+.clip-notch {
+    clip-path: polygon(
+        var(--notch, 24px) 0,
+        100% 0,
+        100% calc(100% - var(--notch, 24px)),
+        calc(100% - var(--notch, 24px)) 100%,
+        0 100%,
+        0 var(--notch, 24px)
+    );
+}
+.clip-mini-notch {
+    clip-path: polygon(
+        var(--notch, 12px) 0,
+        100% 0,
+        100% calc(100% - var(--notch, 12px)),
+        calc(100% - var(--notch, 12px)) 100%,
+        0 100%,
+        0 var(--notch, 12px)
+    );
 }
 
-::selection {
-    background: var(--accent-blue);
-    color: white;
+/* ============================================================
+   MARKETING BACKGROUNDS & TEXTURES
+   ============================================================ */
+.hero-aurora {
+    background-color: rgb(255 251 241);
+    background-image:
+        radial-gradient(46% 40% at 50% -6%, oklch(0.87 0.15 72 / 0.55), transparent 62%),
+        radial-gradient(38% 34% at 10% 6%, oklch(0.84 0.16 50 / 0.42), transparent 60%),
+        radial-gradient(40% 36% at 90% 4%, oklch(0.89 0.11 32 / 0.4), transparent 60%),
+        radial-gradient(52% 44% at 50% 30%, oklch(0.94 0.07 80 / 0.42), transparent 72%),
+        radial-gradient(70% 60% at 50% 118%, rgb(255 251 241), transparent);
+}
+.dark .hero-aurora {
+    background-color: oklch(0.128 0.01 75);
+    background-image:
+        radial-gradient(46% 40% at 50% -6%, oklch(0.5 0.13 72 / 0.45), transparent 62%),
+        radial-gradient(38% 34% at 10% 6%, oklch(0.45 0.13 50 / 0.35), transparent 60%),
+        radial-gradient(40% 36% at 90% 4%, oklch(0.46 0.1 32 / 0.32), transparent 60%),
+        radial-gradient(52% 44% at 50% 30%, oklch(0.3 0.06 80 / 0.4), transparent 72%),
+        radial-gradient(70% 60% at 50% 118%, oklch(0.128 0.01 75), transparent);
 }
 
-::-webkit-scrollbar {
-    width: 6px;
+/* fine grain over gradients to kill banding */
+.grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    mix-blend-mode: soft-light;
+}
+.dark .grain::after {
+    opacity: 0.25;
+    mix-blend-mode: overlay;
 }
 
-::-webkit-scrollbar-track {
-    background: var(--bg-primary);
+/* faded grid that fades out via radial mask */
+.landing-grid {
+    background-image:
+        linear-gradient(to right, oklch(0.145 0.008 75 / 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, oklch(0.145 0.008 75 / 0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 75%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 30%, transparent 75%);
+}
+.dark .landing-grid {
+    background-image:
+        linear-gradient(to right, oklch(0.94 0.008 75 / 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, oklch(0.94 0.008 75 / 0.06) 1px, transparent 1px);
 }
 
-::-webkit-scrollbar-thumb {
-    background: var(--card-bg);
+/* dotted texture variant */
+.landing-dots {
+    background-image: radial-gradient(oklch(0.145 0.008 75 / 0.1) 1px, transparent 1px);
+    background-size: 22px 22px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 30%, transparent 78%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 30%, transparent 78%);
+}
+.dark .landing-dots {
+    background-image: radial-gradient(oklch(0.94 0.008 75 / 0.1) 1px, transparent 1px);
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-blue);
+/* blurred glow behind the H1 for readability */
+.headline-glow::before {
+    content: '';
+    position: absolute;
+    inset: -10% -5%;
+    z-index: -1;
+    background: radial-gradient(closest-side, rgb(255 251 241 / 0.85), transparent 75%);
+    filter: blur(28px);
+    pointer-events: none;
+}
+.dark .headline-glow::before {
+    background: radial-gradient(closest-side, oklch(0.128 0.01 75 / 0.85), transparent 75%);
 }
 
-@keyframes float {
+/* ============================================================
+   MOTION
+   ============================================================ */
+@keyframes ld-float {
     0%,
     100% {
-        transform: translateY(0px);
+        transform: translateY(0);
     }
     50% {
-        transform: translateY(-20px);
+        transform: translateY(-12px);
     }
 }
-
-@keyframes gradient-shift {
+@keyframes ld-aurora-1 {
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(4%, 3%, 0) scale(1.08);
+    }
+}
+@keyframes ld-aurora-2 {
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0) scale(1.05);
+    }
+    50% {
+        transform: translate3d(-4%, 2%, 0) scale(1);
+    }
+}
+@keyframes ld-shimmer {
     0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
+        background-position: -150% 0;
     }
     100% {
-        background-position: 0% 50%;
+        background-position: 250% 0;
     }
 }
-
-@keyframes pulse-glow {
+@keyframes ld-pulse-dot {
     0%,
     100% {
-        box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+        opacity: 1;
+        transform: scale(1);
     }
     50% {
-        box-shadow: 0 0 40px rgba(59, 130, 246, 0.4);
+        opacity: 0.5;
+        transform: scale(0.8);
     }
 }
 
-.animate-float {
-    animation: float 6s ease-in-out infinite;
+.ld-float {
+    animation: ld-float 6.5s var(--ease-premium) infinite;
+}
+.ld-aurora-1 {
+    animation: ld-aurora-1 22s ease-in-out infinite;
+}
+.ld-aurora-2 {
+    animation: ld-aurora-2 26s ease-in-out infinite;
+}
+.ld-pulse-dot {
+    animation: ld-pulse-dot 2.4s ease-in-out infinite;
+}
+.ld-shimmer {
+    background: linear-gradient(
+        100deg,
+        transparent 30%,
+        oklch(0.769 0.154 70.08 / 0.18) 50%,
+        transparent 70%
+    );
+    background-size: 200% 100%;
+    animation: ld-shimmer 2.8s linear infinite;
 }
 
-.animate-float-delayed {
-    animation: float 6s ease-in-out 2s infinite;
+/* ============================================================
+   ACCESSIBILITY — honor reduced motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+    .ld-float,
+    .ld-aurora-1,
+    .ld-aurora-2,
+    .ld-pulse-dot,
+    .ld-shimmer {
+        animation: none !important;
+    }
 }
 
-.animate-gradient {
-    background-size: 200% 200%;
-    animation: gradient-shift 4s ease infinite;
-}
-
-.animate-pulse-glow {
-    animation: pulse-glow 3s ease-in-out infinite;
-}
-
-.gradient-text {
-    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.glass {
-    background: rgba(17, 24, 39, 0.7);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.card-hover {
-    transition: all 0.3s ease;
-}
-
-.card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.card-glow:hover {
-    box-shadow:
-        0 0 30px rgba(59, 130, 246, 0.15),
-        0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.tilt-card {
-    transition: transform 0.3s ease;
-    transform-style: preserve-3d;
-}
-
-.tilt-card:hover {
-    transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) translateY(-4px);
-}
-
-section {
-    scroll-margin-top: 80px;
+/* ============================================================
+   SONNER TOASTS — square + bold
+   ============================================================ */
+[data-sonner-toast],
+[data-sonner-toast] [data-button],
+[data-sonner-toast] [data-close-button] {
+    border-radius: 0 !important;
+    font-weight: 700 !important;
+    font-family: var(--font-averta) !important;
 }

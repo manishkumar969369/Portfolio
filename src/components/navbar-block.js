@@ -52,7 +52,12 @@ const Navbar = () => {
         e.preventDefault();
         setMobileOpen(false);
         const el = document.querySelector(href);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+            // reflect the section in the address bar (no slash before the hash)
+            const path = window.location.pathname.replace(/\/+$/, '');
+            window.history.pushState(null, '', `${path}${href}`);
+        }
     };
 
     return (

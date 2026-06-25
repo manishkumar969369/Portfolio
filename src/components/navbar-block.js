@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { PiListBold, PiX, PiArrowRight } from 'react-icons/pi';
 import { ClipButton } from './ui/buttons';
 import ThemeToggle from './ui/theme-toggle';
@@ -102,13 +103,12 @@ const Navbar = () => {
                     {/* Right actions */}
                     <div className="flex flex-shrink-0 items-center gap-2">
                         <ThemeToggle />
-                        <a
-                            href="/resume.pdf"
-                            download
-                            className="hidden rounded-full px-3.5 py-2 text-sm text-stone-600 transition-colors hover:bg-muted hover:text-foreground dark:text-stone-300 sm:inline-flex"
+                        <Link
+                            href="/resume"
+                            className="hidden px-3.5 py-2 text-sm text-stone-600 transition-colors hover:text-primary focus-visible:text-primary dark:text-stone-300 dark:hover:text-primary sm:inline-flex"
                         >
                             Resume
-                        </a>
+                        </Link>
                         <ClipButton
                             href="#contact"
                             onClick={(e) => handleClick(e, '#contact')}
@@ -166,13 +166,13 @@ const Navbar = () => {
                                 {item.label}
                             </a>
                         ))}
-                        <a
-                            href="/resume.pdf"
-                            download
+                        <Link
+                            href="/resume"
+                            onClick={() => setMobileOpen(false)}
                             className="mt-2 px-4 py-2.5 text-sm text-stone-600 transition-colors hover:text-primary dark:text-stone-300 dark:hover:text-primary"
                         >
-                            Download Resume
-                        </a>
+                            Resume
+                        </Link>
                         <div className="mt-2 px-4">
                             <ClipButton
                                 href="#contact"

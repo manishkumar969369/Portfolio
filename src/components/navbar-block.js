@@ -78,7 +78,7 @@ const Navbar = () => {
                         className="group flex flex-shrink-0 items-center gap-2.5"
                     >
                         <span className="font-geom text-base md:text-lg font-semibold tracking text-foreground">
-                            Manish Kumar
+                             Manish Kumar
                         </span>
                     </a>
 

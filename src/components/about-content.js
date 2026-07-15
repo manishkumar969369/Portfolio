@@ -9,22 +9,21 @@ import { ClipOutlineButton } from './ui/buttons';
 
 const stats = [
     { value: '2x', label: 'Internships', tone: 'amber' },
-    { value: '9+', label: 'Shipped projects', tone: 'blue' },
-    { value: '2x', label: 'Kaggle Expert', tone: 'green' },
-    { value: '1x', label: 'Hackathon win', tone: 'purple' },
+    { value: '3+', label: 'Shipped projects', tone: 'blue' },
+    // { value: '2x', label: 'Kaggle Expert', tone: 'green' },
+    { value: '2x', label: 'Participated Hackathon ', tone: 'purple' },
 ];
 
 const highlights = [
-    'B.Sc Data Science graduate',
+    'B.tech Computer Science',
     'AI / ML focused developer',
     'MERN + GenAI full-stack builder',
     'Building real-world AI products',
 ];
 
 const socials = [
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/prince-khunt-linked-in/', icon: <FaLinkedin /> },
-    { name: 'GitHub', url: 'https://github.com/PrinceKhunt16/', icon: <FaGithub /> },
-    { name: 'Kaggle', url: 'https://www.kaggle.com/princekhunt19', icon: <FaKaggle /> },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/manish-kumar-b95610307/', icon: <FaLinkedin /> },
+    { name: 'GitHub', url: 'https://github.com/manishkumar969369', icon: <FaGithub /> },
 ];
 
 const toneMap = {
@@ -49,15 +48,15 @@ const AboutContent = () => {
                     <Reveal>
                         <p className="text-lg leading-relaxed text-pretty text-muted-foreground">
                             Hello! I&apos;m{' '}
-                            <span className="font-medium text-foreground">Prince Khunt</span>, a
-                            B.Sc Data Science graduate passionate about{' '}
-                            <span className="font-medium text-foreground">Data Science</span> and{' '}
-                            <span className="font-medium text-foreground">AI</span>.
+                            <span className="font-medium text-foreground">Manish Kumar</span>, an student of
+                            B.tech Cse {' '}
+                            <span className="font-medium text-foreground">AI & ML</span>
+                            {/* <span className="font-medium text-foreground">AI</span>. */}
                         </p>
                         <p className="mt-5 text-lg leading-relaxed text-pretty text-muted-foreground">
                             I&apos;m skilled in{' '}
                             <span className="font-medium text-foreground">
-                                ML, DL, GenAI, MLOps, and the MERN stack
+                                ML, DL, GenAI, and the MERN stack
                             </span>
                             . I enjoy solving real-world problems with data-driven insights and
                             shipping full-stack applications.

@@ -1,7 +1,7 @@
 'use client';
 
 import { toast } from 'sonner';
-import { FaLinkedin, FaGithub, FaKaggle, FaYoutube } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaKaggle } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { SiLeetcode } from 'react-icons/si';
 import { PiPaperPlaneTilt } from 'react-icons/pi';
@@ -11,12 +11,9 @@ import ClipCard from './ui/clip-card';
 import { ClipButton } from './ui/buttons';
 
 const socials = [
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/prince-khunt-linked-in/', icon: <FaLinkedin />, color: '#0A66C2' },
-    { name: 'GitHub', url: 'https://github.com/PrinceKhunt16/', icon: <FaGithub />, color: 'currentColor' },
-    { name: 'Kaggle', url: 'https://www.kaggle.com/princekhunt19', icon: <FaKaggle />, color: '#20BEFF' },
-    { name: 'Twitter', url: 'https://x.com/princekhunt19', icon: <FaXTwitter />, color: 'currentColor' },
-    { name: 'LeetCode', url: 'https://leetcode.com/u/PRINCEKHUNT/', icon: <SiLeetcode />, color: '#FFA116' },
-    { name: 'YouTube', url: 'https://www.youtube.com/@princekhuntYT', icon: <FaYoutube />, color: '#FF0000' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/manish-kumar-b95610307/', icon: <FaLinkedin />, color: '#0A66C2' },
+    { name: 'GitHub', url: 'https://github.com/manishkumar969369', icon: <FaGithub />, color: 'currentColor' },
+    { name: 'LeetCode', url: 'https://leetcode.com/u/Procoder375/', icon: <SiLeetcode />, color: '#FFA116' },
 ];
 
 const ContactContent = () => {
@@ -34,7 +31,7 @@ const ContactContent = () => {
         const subject = encodeURIComponent(data.get('subject') || 'Portfolio Contact');
         const body = encodeURIComponent(`Name: ${name}\n\n${message}`);
         window.open(
-            `mailto:princekhunt1610@gmail.com?subject=${subject}&body=${body}`,
+            `mailto:manishgupta3859@gmail.com?subject=${subject}&body=${body}`,
             '_blank'
         );
         toast.success('Opening your email client…');
@@ -85,7 +82,7 @@ const ContactContent = () => {
                         className="bg-card p-7 sm:p-9 [--notch:22px]"
                     >
                         <h3 className="font-geom text-center text-xl font-semibold tracking-tight text-foreground">
-                            Send a message
+                            Send a message through email
                         </h3>
                         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -112,7 +109,7 @@ const ContactContent = () => {
                             />
                             <div className="flex justify-center pt-1">
                                 <ClipButton type="submit" innerClassName="px-7 py-3.5">
-                                    Send message
+                                    Send email
                                     <PiPaperPlaneTilt className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                                 </ClipButton>
                             </div>

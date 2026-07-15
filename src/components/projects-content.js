@@ -9,199 +9,72 @@ import ClipCard from './ui/clip-card';
 
 const projects = [
     {
-        title: 'Customer Care — AI Support Assistant',
+        title: 'AI POWERED | ATTENDENCE',
+        subtitle:'Student portal',
         projectImages: [
             './projects/11/ss1.png',
+            './projects/11/ss5.png',
             './projects/11/ss2.png',
             './projects/11/ss3.png',
+            './projects/11/enrollment.png',
             './projects/11/ss4.png',
-            './projects/11/ss5.png',
             './projects/11/ss6.png',
             './projects/11/ss7.png',
         ],
         descriptionPoints: [
-            'Built an ecommerce support chatbot with an Agentic RAG workflow (LangGraph planner → executor → synthesizer) that answers product, order-tracking, and shipping/returns queries.',
-            "Streamed the agent's thinking, tool calls, and final answer live to the UI over WebSockets, backed by JWT auth, Postgres + pgvector retrieval, and Redis short-term memory.",
+            'Developed an AI-powered attendance management system that automates attendance using Face Recognition and Voice Recognition, ensuring secure, accurate, and proxy-free attendance.',
+            "Built an interactive platform where teachers can create subjects, manage attendance, and enroll students via QR codes or subject codes, while students can log in with Face ID and track their attendance in real time.",
         ],
-        techstack: ['LangGraph', 'Gemini', 'pgvector'],
+        techstack: ['Supabase', 'OpenCV', 'dlib','scikit-learn (SVM)','Resemblyzer','Librosa','NumPy','HTML','CSS'],
         links: [
             {
                 title: 'GitHub',
-                url: 'https://github.com/PrinceKhunt16/Ecommerce-AI-Assistant-AGENTIC',
+                url: 'https://github.com/manishkumar969369/snapclass-project',
             },
         ],
     },
     {
-        title: 'Wed-IMG-Finder — Wedding Photo Finder',
-        projectImages: ['./projects/12/ss1.jpeg', './projects/12/ss2.jpeg'],
+        title: 'Real-Time AI Gym Coach Using Computer Vision & LLMs',
+        projectImages: ['./projects/12/ss2.png',
+                        './projects/12/ss1.png',
+                        './projects/12/ss3.png',
+                        './projects/12/ss4.png',
+                        './projects/12/ss5.png',
+                        ],
         descriptionPoints: [
-            'Built a face-recognition wedding photo finder that lets guests instantly find every photo they appear in by uploading a single selfie.',
-            'Engineered an async pipeline with FastAPI, Celery, and Redis to detect faces and generate embeddings in the background, storing them in PostgreSQL + pgvector for fast vector similarity search.',
-            'Developed a Next.js 15 / React 19 frontend and integrated InsightFace for face detection.',
+            'Developed an AI Real Gym Coach that uses MediaPipe Pose (pose_landmarker_full.task) and OpenCV to detect body landmarks, calculate joint angles, analyze exercise form, and accurately count repetitions in real time, ensuring users perform workouts with proper technique..',
+            'Integrated the Groq API with the Llama-3.3-70B-Versatile model to generate personalized AI-powered voice feedback based on the users performance. This project provided hands-on experience in combining Computer Vision, Machine Learning, and Large Language Models (LLMs) to build a real-world intelligent fitness application.',
         ],
-        techstack: ['FastAPI', 'InsightFace', 'pgvector'],
+        techstack: ['Python', 'streamlit', 'MediaPipe Pose (pose_landmarker_full.task)','Llama-3.3-70B-Versatile','gTTS (Google Text-to-Speech)','NumPy','Groq API','HTML','CSS','Javascript','OpenCV'],
         links: [
             {
                 title: 'GitHub',
-                url: 'https://github.com/PrinceKhunt16/Wed-IMG-Finder',
+                url: 'https://github.com/manishkumar969369/AI-Gym-Coach-landing-page?utm_source=chatgpt.com',
             },
         ],
     },
     {
-        title: 'Job Genie - One click job search tool',
+        title: 'Full-Stack Real-Time Stock Trading & Monitoring Platform',
         projectImages: [
             './projects/1/ss1.png',
-            './projects/1/ss2.png',
-            './projects/1/ss3.png',
-            './projects/1/ss4.png',
-            './projects/1/ss5.png',
             './projects/1/ss6.png',
+            './projects/1/ss5.png',
+            './projects/1/ss2.png',
+            './projects/1/ss4.png',
+            './projects/1/ss3.png',
             './projects/1/ss7.png',
+            './projects/1/ss8.png',
         ],
         descriptionPoints: [
-            'Job Genie uses an intelligent job search agent powered by CrewAI to automate finding job listings on company career pages.',
-            "Users select a company's URL and specify a list of job roles they are interested in.",
-            'The agent crawls the selected career page and extracts relevant job details.',
+            'Developed a full-stack Zerodha Clone that replicates the core functionality of the Zerodha trading platform, including secure user authentication, a responsive dashboard, portfolio management, holdings, positions, and order management. Built a modern and intuitive user interface to deliver a seamless trading experience.',
+            "Designed and integrated a RESTful backend to manage user accounts, holdings, positions, and orders using MongoDB for data storage. Implemented CRUD operations, API integration, and responsive frontend components while gaining hands-on experience in full-stack web development and client-server architecture.",
         ],
-        techstack: ['CrewAI', 'FastAPI', 'Next.js', 'MongoDB'],
+        techstack: ['React.js', 'Material UI (MUI)', 'JavaScript (ES6+)', 'Node.js','MongoDB','Express','Mongoose','REST API','Axios'],
         links: [
-            { title: 'GitHub', url: 'https://github.com/PrinceKhunt16/Job-Genie-AI-Next-FastAPI' },
+            { title: 'GitHub', url: 'https://github.com/manishkumar969369/Zerodha-Backend' },
         ],
     },
-    {
-        title: 'Gmail AI Assistant - Chrome Extension',
-        projectImages: [
-            './projects/10/ss1.png',
-            './projects/10/ss2.png',
-            './projects/10/ss3.png',
-            './projects/10/ss4.png',
-        ],
-        descriptionPoints: [
-            'Gmail AI Assistant Extension is a productivity tool designed to enhance your mail writing experience.',
-            'It provides AI-generated responses in real-time, helping you craft mails more efficiently.',
-        ],
-        techstack: ['GroqCloudAPI', 'Next.js'],
-        links: [
-            {
-                title: 'GitHub',
-                url: 'https://github.com/PrinceKhunt16/Gmail-AI-Assistant-Chrome-Extension',
-            },
-            {
-                title: 'Download',
-                url: 'https://chromewebstore.google.com/detail/gmail-ai-assistant/jibmoeefcmpaaiebbhdfocogbinlmkhg?',
-            },
-        ],
-    },
-    {
-        title: 'LinkedIn Chat Assistant - Chrome Extension',
-        projectImages: [
-            './projects/2/ss1.png',
-            './projects/2/ss2.jpeg',
-            './projects/2/ss3.jpeg',
-            './projects/2/ss4.jpeg',
-            './projects/2/ss5.jpeg',
-            './projects/2/ss6.jpeg',
-        ],
-        descriptionPoints: [
-            'LinkedIn Chat Assistant Extension is a productivity tool designed to enhance your LinkedIn messaging experience.',
-            'It provides AI-generated responses in real-time, helping you craft messages more efficiently.',
-        ],
-        techstack: ['GroqCloudAPI', 'Next.js'],
-        links: [
-            {
-                title: 'GitHub',
-                url: 'https://github.com/PrinceKhunt16/Linkedin-Chat-Assistant-Chrome-Extension',
-            },
-            {
-                title: 'Download',
-                url: 'https://chromewebstore.google.com/detail/linkedin-chat-assistant/lponolgdemijgndelchhnmnnhmdfblih',
-            },
-        ],
-    },
-    {
-        title: 'Chat to Order - Order food through chat',
-        projectImages: [
-            './projects/3/ss1.png',
-            './projects/3/ss2.png',
-            './projects/3/ss3.png',
-            './projects/3/ss4.png',
-            './projects/3/ss5.png',
-            './projects/3/ss6.png',
-            './projects/3/ss7.png',
-            './projects/3/ss8.png',
-            './projects/3/ss9.png',
-            './projects/3/ss10.png',
-            './projects/3/ss11.png',
-        ],
-        descriptionPoints: [
-            'Chat to Order is an AI-powered web application that allows users to order food through a conversational interface.',
-            'The chatbot leverages BERT for intent detection and spaCy for NER to understand user queries and process orders.',
-        ],
-        techstack: ['NLP', 'Langchain', 'MERN', 'Huggingface', 'BERT', 'NER', 'Spacy'],
-        links: [
-            {
-                title: 'GitHub',
-                url: 'https://github.com/PrinceKhunt16/Chat-to-Order-GenAI-NLP-Flask-React',
-            },
-        ],
-    },
-    {
-        title: 'Smart Kitchen Helper Chat Assistant',
-        projectImages: ['./projects/9/ss1.png', './projects/9/ss2.png', './projects/9/ss3.png'],
-        descriptionPoints: [
-            'Developed a domain-specific chatbot using Agentic RAG and open-source LLMs to answer recipe-related queries.',
-            'Integrated LangGraph, GroqCloud, FastAPI, and Streamlit to build an interactive cooking assistant.',
-        ],
-        techstack: ['LangGraph', 'RAG', 'GroqCloud'],
-        links: [
-            {
-                title: 'GitHub',
-                url: 'https://github.com/PrinceKhunt16/Smart-Kitchen-Helper-AgenticRAG',
-            },
-        ],
-    },
-    {
-        title: 'Self Drive Car - Computer Vision',
-        projectImages: ['./projects/5/ss1.png'],
-        descriptionPoints: [
-            'Built a Self-Drive Car project mastering road detection, lane segmentation, and steering angle prediction.',
-            'Merged multiple datasets, trained three models, and developed a UI using OpenCV to simulate real-time driving.',
-        ],
-        techstack: ['YOLO', 'OpenCV', 'Python', 'Computer Vision', 'Deep Learning'],
-        links: [
-            {
-                title: 'GitHub',
-                url: 'https://github.com/PrinceKhunt16/Self-Drive-Car-Computer-Vision-YOLOv11',
-            },
-            {
-                title: 'Steering Angle Model',
-                url: 'https://www.kaggle.com/code/princekhunt19/keras-model-steering-angle-prediction',
-            },
-            {
-                title: 'Lane Segmentation',
-                url: 'https://www.kaggle.com/code/princekhunt19/yolov11-road-lane-segmentation',
-            },
-            {
-                title: 'Object Detection',
-                url: 'https://www.kaggle.com/code/princekhunt19/yolov11-object-detection-road-visualization',
-            },
-        ],
-    },
-    {
-        title: 'Vehicles Insurance Prediction',
-        projectImages: ['./projects/7/ss1.png'],
-        descriptionPoints: [
-            'End-to-end MLOps pipeline for vehicle insurance prediction, automating from data ingestion to deployment.',
-            'Used MongoDB, DVC, MLflow, Docker, and AWS with automated CI/CD.',
-        ],
-        techstack: ['MLOps', 'AWS', 'Docker', 'CICD'],
-        links: [
-            {
-                title: 'GitHub',
-                url: 'https://github.com/PrinceKhunt16/Vehicle-Insuerance-MLOps-AWS',
-            },
-        ],
-    },
+
 ];
 
 const ProjectCard = ({ project, featured }) => {

@@ -55,9 +55,9 @@ const youngSerif = Young_Serif({
 });
 
 export const metadata = {
-    title: 'Prince Khunt | AI Developer Portfolio',
+    title: 'Manish Kumar| AI Developer Portfolio',
     description:
-        'Portfolio website of Prince Khunt - Specializing in ML, DL, GenAI, and MERN stack.',
+        'Portfolio website of Manish Kumar - Specializing in ML, DL, GenAI, and MERN stack.',
 };
 
 export const viewport = {
@@ -98,11 +98,11 @@ export default function RootLayout({ children }) {
                         __html: JSON.stringify({
                             '@context': 'https://schema.org',
                             '@type': 'Person',
-                            name: 'Prince Khunt',
+                            name: 'Manish Kumar',
                             url: 'https://princekhunt16.github.io/PortfolioWebsite/',
                             sameAs: [
-                                'https://www.linkedin.com/in/princekhunt/',
-                                'https://github.com/PrinceKhunt16',
+                                'linkedin.com/in/manish-kumar-b95610307/',
+                                'https://github.com/manishkumar969369',
                             ],
                         }),
                     }}

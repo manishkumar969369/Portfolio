@@ -9,7 +9,7 @@ const Footer = () => {
             <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
                 <div className="flex items-center gap-2.5">
                     <p className="text-sm md:text-base text-muted-foreground">
-                        &copy; {new Date().getFullYear()} Prince Khunt. Built with ❤️.
+                        &copy; {new Date().getFullYear()} Manish Kumar. Built with ❤️.
                     </p>
                 </div>
 

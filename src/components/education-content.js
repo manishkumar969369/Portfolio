@@ -29,20 +29,20 @@ const EducationContent = () => {
                                 <Image
                                     width={64}
                                     height={64}
-                                    src="./marwadiuniversity.jpeg"
-                                    alt="Marwadi University Logo"
+                                    src="./GeetaUniversityLogo.png"
+                                    alt="Geeta University Logo"
                                     className="clip-mini-notch size-16 object-cover [--notch:8px]"
                                 />
                             </div>
                             <div>
                                 <h3 className="font-geom text-xl font-semibold tracking-tight text-foreground">
-                                    Marwadi University
+                                    Geeta University
                                 </h3>
                                 <p className="mt-1 bg-gradient-to-r from-amber-600 to-orange-500 bg-clip-text font-medium text-transparent">
-                                    Bachelor&apos;s of Science in Data Science
+                                    Bachelor&apos;s of Technology with specialization in AI ML
                                 </p>
                                 <p className="mt-2 text-sm text-muted-foreground">
-                                    July 2023 &ndash; Feb 2026
+                                    July 2024 &ndash; May 2028
                                 </p>
                             </div>
                         </div>

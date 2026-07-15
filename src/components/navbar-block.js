@@ -9,12 +9,12 @@ import ThemeToggle from './ui/theme-toggle';
 const navItems = [
     { label: 'Home', href: '#home' },
     { label: 'About', href: '#about' },
-    { label: 'Experience', href: '#experience' },
+    // { label: 'Experience', href: '#experience' },
     { label: 'Projects', href: '#projects' },
     { label: 'Skills', href: '#skills' },
     { label: 'Certifications', href: '#certifications' },
-    { label: 'Achievements', href: '#achievements' },
-    { label: 'YouTube', href: '#youtube' },
+    // { label: 'Achievements', href: '#achievements' },
+    // { label: 'YouTube', href: '#youtube' },
     { label: 'Contact', href: '#contact' },
 ];
 
@@ -78,7 +78,7 @@ const Navbar = () => {
                         className="group flex flex-shrink-0 items-center gap-2.5"
                     >
                         <span className="font-geom text-base md:text-lg font-semibold tracking text-foreground">
-                            Prince Khunt
+                            Manish Kumar
                         </span>
                     </a>
 
@@ -104,7 +104,7 @@ const Navbar = () => {
                     <div className="flex flex-shrink-0 items-center gap-2">
                         <ThemeToggle />
                         <Link
-                            href="/resume"
+                            href="/Manish_AI_ML_Resume.pdf"
                             className="hidden px-3.5 py-2 text-sm text-stone-600 transition-colors hover:text-primary focus-visible:text-primary dark:text-stone-300 dark:hover:text-primary sm:inline-flex"
                         >
                             Resume

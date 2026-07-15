@@ -30,8 +30,8 @@ const HeroContent = () => {
                     <Image
                         width={150}
                         height={150}
-                        src="./prince.jpeg"
-                        alt="Prince Khunt"
+                        src="./manish.jpg"
+                        alt="Manish Kumar"
                         className="font-caprasimo size-[120px] object-cover sm:size-[140px]"
                         priority
                     />
@@ -40,7 +40,7 @@ const HeroContent = () => {
                 {/* name */}
                 <div className="headline-glow relative mt-8">
                     <h1 className="font-caprasimo text-[2.6rem] leading-[1.08] text-balance text-foreground sm:text-6xl lg:text-7xl">
-                        Prince Khunt
+                        Manish Kumar
                     </h1>
                 </div>
 
@@ -55,8 +55,7 @@ const HeroContent = () => {
 
                 {/* sub-tagline */}
                 <p className="font-geom mt-4 max-w-xl text-pretty leading-relaxed text-muted-foreground">
-                    2x Intern · Kaggle 2x Expert · 1x Hackathon Winner. Currently turning
-                    data-driven ideas into real, shipped applications.
+                    Currently turning data-driven ideas into real, shipped applications.
                 </p>
 
                 {/* CTAs */}
@@ -75,7 +74,7 @@ const HeroContent = () => {
                         <PiArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                     </ClipButton>
                     <ClipOutlineButton
-                        href="/resume.pdf"
+                        href="/Manish_AI_ML_Resume.pdf"
                         download
                         innerClassName="px-7 py-3.5"
                     >

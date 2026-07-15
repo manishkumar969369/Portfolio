@@ -7,77 +7,37 @@ import ClipCard from './ui/clip-card';
 
 const certifications = [
     {
-        title: 'Fine Tune LLM with HF Transformers for NLP - KGPTalkie',
-        issuedBy: 'Udemy',
-        issuedDate: 'Feb 2025',
-        certificateImage: './certificates/certificate-1.jpg',
+        title: 'Alpha C++ | Data Structures & Algorithms (DSA) ✅',
+        issuedBy: 'APNA COLLEGE',
+        issuedDate: 'JULY 2025',
+        certificateImage: './certificates/certificate-1.png',
     },
     {
-        title: 'DL for Computer Vision',
-        issuedBy: 'CampusX',
-        issuedDate: 'Dec 2024',
-        certificateImage: './certificates/certificate-2.jpg',
+        title: 'Delta Full Stack Web Development ✅',
+        issuedBy: 'APNA COLLEGE',
+        issuedDate: 'Dec 2025',
+        certificateImage: './certificates/certificate-2.png',
     },
     {
-        title: 'ML Specialization',
-        issuedBy: 'Coursera',
-        issuedDate: 'Jun 2024',
-        certificateImage: './certificates/certificate-8.jpg',
+        title: ' Prime Artificial Intelligence & Machine Learning ✅',
+        issuedBy: 'APNA COLLEGE',
+        issuedDate: 'APR 2025',
+        certificateImage: './certificates/certificate-3.png',
     },
+    // {
+    //     title: 'ML Model in Production with FastAPI and Docker - KGPTalkie',
+    //     issuedBy: 'Udemy',
+    //     issuedDate: 'Jun 2025',
+    //     certificateImage: './certificates/certificate-11.jpg',
+    // },
     {
-        title: 'ML Model in Production with FastAPI and Docker - KGPTalkie',
-        issuedBy: 'Udemy',
-        issuedDate: 'Jun 2025',
-        certificateImage: './certificates/certificate-11.jpg',
-    },
-    {
-        title: 'NPTEL - Introduction to Machine Learning',
+        title: 'NPTEL – Philosophy and Critical Thinking ✅',
         issuedBy: 'NPTEL',
         issuedDate: 'Apr 2025',
-        certificateImage: './certificates/certificate-12.jpg',
+        certificateImage: './certificates/certificate-4.png',
     },
-    {
-        title: 'Build Apps with Gemini Pro',
-        issuedBy: 'Udemy',
-        issuedDate: 'Nov 2024',
-        certificateImage: './certificates/certificate-3.jpg',
-    },
-    {
-        title: 'Complete Generative AI',
-        issuedBy: 'Udemy',
-        issuedDate: 'Nov 2024',
-        certificateImage: './certificates/certificate-4.jpg',
-    },
-    {
-        title: 'Complete ML, DL and NLP Bootcamp',
-        issuedBy: 'Udemy',
-        issuedDate: 'Nov 2024',
-        certificateImage: './certificates/certificate-5.jpg',
-    },
-    {
-        title: 'Introduction to NoSQL databases',
-        issuedBy: 'Infosys Springboard',
-        issuedDate: 'Mar 2025',
-        certificateImage: './certificates/certificate-10.jpg',
-    },
-    {
-        title: 'SQL (Basic)',
-        issuedBy: 'HackerRank',
-        issuedDate: 'Aug 2024',
-        certificateImage: './certificates/certificate-6.jpg',
-    },
-    {
-        title: 'SQL (Intermediate)',
-        issuedBy: 'HackerRank',
-        issuedDate: 'Aug 2024',
-        certificateImage: './certificates/certificate-7.jpg',
-    },
-    {
-        title: 'New India Vibrant Hackathon 2023',
-        issuedBy: 'SSIP Gujarat',
-        issuedDate: 'Nov 2023',
-        certificateImage: './certificates/certificate-9.jpg',
-    },
+   
+    
 ];
 
 const CertificationsContent = () => {

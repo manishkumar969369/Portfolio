@@ -99,7 +99,7 @@ export default function RootLayout({ children }) {
                             '@context': 'https://schema.org',
                             '@type': 'Person',
                             name: 'Manish Kumar',
-                            url: 'https://princekhunt16.github.io/PortfolioWebsite/',
+                            url: 'https://portfolio-manish-app.netlify.app/',
                             sameAs: [
                                 'linkedin.com/in/manish-kumar-b95610307/',
                                 'https://github.com/manishkumar969369',

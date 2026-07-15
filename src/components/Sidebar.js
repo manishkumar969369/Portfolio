@@ -123,7 +123,7 @@ const Sidebar = ({ ml, setMl }) => {
                         left: '50px',
                     }}
                 >
-                    Prince Khunt
+                    Manish Kumar
                 </h1>
             </div>
 

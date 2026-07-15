@@ -3,8 +3,8 @@ import { PiArrowLeft, PiDownloadSimple } from 'react-icons/pi';
 import { ClipButton } from '@/components/ui/buttons';
 
 export const metadata = {
-    title: 'Resume | Prince Khunt',
-    description: 'View and download the resume of Prince Khunt.',
+    title: 'Resume | Manish Kumar',
+    description: 'View and download the resume of Manish Kumar.',
 };
 
 const ResumePage = () => {
